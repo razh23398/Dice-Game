@@ -1,3 +1,5 @@
+function game(){
+
 //Dice number 1
 // Dice 1 pick number
 var randomNumber1 = (Math.floor((Math.random()*6)) + 1)
@@ -42,4 +44,28 @@ if (randomNumber1 > randomNumber2){
   document.querySelector("h1").innerHTML = "Player 2 Win!🚩"
 }else if (randomNumber1 = randomNumber2){
   document.querySelector("h1").innerHTML = "Draw!"
+}
+
+
+// score starting point
+// sessionStorage.setItem("score1", 0)
+// sessionStorage.setItem("score2", 0)
+// var score1 = 0
+// var score2 = 0
+if (sessionStorage.getItem("score1") === null){
+  sessionStorage.setItem("score1", 0)
+}
+
+if (sessionStorage.getItem("score2") === null){
+  sessionStorage.setItem("score2", 0)
+}
+
+if (randomNumber1 > randomNumber2){
+sessionStorage.setItem("score1" ,Number(sessionStorage.getItem("score1")) + 1)
+}else if(randomNumber1 < randomNumber2){
+sessionStorage.setItem("score2", Number(sessionStorage.getItem("score2")) + 1)
+}
+
+document.querySelector(".score1p").innerHTML = "score: " + sessionStorage.getItem("score1")
+document.querySelector(".score2p").innerHTML = "score: " + sessionStorage.getItem("score2")
 }
